@@ -1,8 +1,10 @@
 part of "buttons.dart";
 
 class MyMessagesButton extends StatelessWidget {
-  const MyMessagesButton({Key key, this.onTap, this.counter}) : super(key: key);
+  const MyMessagesButton({Key key, this.text, this.onTap, this.counter})
+      : super(key: key);
 
+  final String text;
   final VoidCallback onTap;
   final int counter;
 
@@ -12,7 +14,7 @@ class MyMessagesButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          'My messages',
+          text ?? 'My messages',
           style: TextStyle(fontSize: 12, color: Colors.white),
         ),
       ],
