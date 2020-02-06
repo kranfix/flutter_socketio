@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  socket_io_client: ^0.9.7+2
+  adhara_socket_io: ^0.4.1
   http: ^0.12.0+4
   provider: ^4.0.3
   timeago: ^2.0.26
@@ -18,6 +18,7 @@ dependencies:
   hive_flutter: ^0.3.0+1
   badges: ^1.1.0
   fab_circular_menu: ^0.1.4
+  bubble: ^1.1.9+1
 
 dev_dependencies:
   flutter_test:
