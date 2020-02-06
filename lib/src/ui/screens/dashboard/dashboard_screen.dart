@@ -10,6 +10,7 @@ import 'package:flutter_socketio/src/providers/providers.dart';
 import 'package:flutter_socketio/src/services/services.dart';
 import 'package:flutter_socketio/src/ui/widgets/my_app_bar.dart';
 import 'package:flutter_socketio/src/ui/widgets/socketio_logo.dart';
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 
 class DashboardScreen extends StatelessWidget {
   @override
@@ -21,10 +22,16 @@ class DashboardScreen extends StatelessWidget {
         // TODO: create MessagesScreen
         //onTapMessageButton: () => MessageScreen.navigate(context),
       ),
-      body: _DashboardBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<AuthBloc>().logout(),
-        child: Icon(Icons.exit_to_app),
+      body: FabCircularMenu(
+        ringColor: AppColors.orange.withOpacity(0.5),
+        options: <Widget>[
+          IconButton(
+            tooltip: 'Logout',
+            icon: Icon(Icons.home),
+            onPressed: () => context.read<AuthBloc>().logout(),
+          ),
+        ],
+        child: _DashboardBody(),
       ),
     );
   }
@@ -40,9 +47,8 @@ class __DashboardBodyState extends State<_DashboardBody> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    scheduleMicrotask(initFuture);
+    initFuture();
   }
 
   Future<void> initFuture() async {
@@ -74,19 +80,9 @@ class __DashboardBodyState extends State<_DashboardBody> {
       itemBuilder: (_, index) {
         final u = users[index];
         return ListTile(
-          leading: Container(
-            margin: const EdgeInsets.only(right: 16),
-            width: 55,
-            height: 55,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-              border: Border.all(color: AppColors.grey.light1, width: 1),
-              image: DecorationImage(
-                image: NetworkImage(u.avatar),
-                fit: BoxFit.fill,
-              ),
-            ),
+          leading: CircleAvatar(
+            radius: 28,
+            backgroundImage: NetworkImage(u.avatar),
           ),
           title: Text('${u.firstName} ${u.lastName}'),
           subtitle: Text('${u.email}'),
