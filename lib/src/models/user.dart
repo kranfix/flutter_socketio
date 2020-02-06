@@ -10,6 +10,8 @@ class User {
     return User._(map);
   }
 
+  Map<String, dynamic> get $data => {..._data};
+
   int get id => _data['id'];
   String get email => _data['email'];
   String get firstName => _data['first_name'];
