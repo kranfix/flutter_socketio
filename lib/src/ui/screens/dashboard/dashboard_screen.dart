@@ -27,7 +27,7 @@ class DashboardScreen extends StatelessWidget {
         options: <Widget>[
           IconButton(
             tooltip: 'Logout',
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.exit_to_app),
             onPressed: () => context.read<AuthBloc>().logout(),
           ),
         ],
