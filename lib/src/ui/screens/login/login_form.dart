@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_socketio/src/colors/colors.dart';
 import 'package:flutter_socketio/src/providers/providers.dart';
 import 'package:flutter_socketio/src/ui/widgets/widgets.dart';
+import 'package:flutter_socketio/src/utils/extensions/email_verifier_x.dart';
+import 'package:flutter_socketio/src/utils/extensions/password_verifier_x.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -51,10 +53,10 @@ class _LoginFormState extends State<LoginForm> {
 
   bool shouldRememberAccount = true;
 
-  String get username => _emailController.text.trim();
+  String get email => _emailController.text.trim();
 
   bool get isDataValid =>
-      username.isNotEmpty && _passController.text.isNotEmpty;
+      email.isValidEmail && _passController.text.isValidPassword;
 
   TextStyle get labelStyle =>
       widget.labelStyle ??
@@ -111,7 +113,7 @@ class _LoginFormState extends State<LoginForm> {
             text: "Ingresar",
             onPressed: isDataValid && widget.onLoginPressed != null
                 ? () => widget.onLoginPressed(
-                      username,
+                      email,
                       _passController.text,
                       shouldRememberAccount,
                     )
