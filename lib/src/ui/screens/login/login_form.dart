@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_socketio/src/colors/colors.dart';
 import 'package:flutter_socketio/src/providers/providers.dart';
+import 'package:flutter_socketio/src/ui/screens/register/register_screen.dart';
 import 'package:flutter_socketio/src/ui/widgets/widgets.dart';
 import 'package:flutter_socketio/src/utils/extensions/email_verifier_x.dart';
 import 'package:flutter_socketio/src/utils/extensions/password_verifier_x.dart';
@@ -100,13 +101,22 @@ class _LoginFormState extends State<LoginForm> {
             obscureText: true,
           ),
           SizedBox(height: 20),
-          StatefulBuilder(
-            builder: (_, checkboxSetState) => CustomCheckBox(
-              value: shouldRememberAccount,
-              text: Text(widget.rememberAccount),
-              onChanged: (newValue) =>
-                  checkboxSetState(() => shouldRememberAccount = newValue),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              StatefulBuilder(
+                builder: (_, checkboxSetState) => CustomCheckBox(
+                  value: shouldRememberAccount,
+                  text: Text(widget.rememberAccount),
+                  onChanged: (newValue) =>
+                      checkboxSetState(() => shouldRememberAccount = newValue),
+                ),
+              ),
+              LinkText(
+                'Register',
+                onTap: () => RegisterScreen.navigate(context),
+              ),
+            ],
           ),
           SizedBox(height: 20),
           LargeButton(
