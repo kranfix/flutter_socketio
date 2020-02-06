@@ -1,8 +1,7 @@
 import 'dart:async';
+import '../screens.dart';
 
 import 'package:flutter/material.dart';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_socketio/env.dart';
 import 'package:flutter_socketio/src/colors/colors.dart';
 import 'package:flutter_socketio/src/models/models.dart';
@@ -21,8 +20,7 @@ class DashboardScreen extends StatelessWidget {
         appBar: MyMessageAppBar(
           messageCounter: 0, // TODO: connect to bloc
           logo: SocketioLogo(width: 35),
-          // TODO: create MessagesScreen
-          //onTapMessageButton: () => MessageScreen.navigate(context),
+          onTapMessageButton: () => ChatScreen.navigate(context),
         ),
         body: FabCircularMenu(
           ringColor: AppColors.orange.withOpacity(0.5),
