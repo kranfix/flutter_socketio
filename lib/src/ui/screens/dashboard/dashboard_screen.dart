@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_socketio/src/colors/colors.dart';
 import 'package:flutter_socketio/src/models/models.dart';
 import 'package:flutter_socketio/src/providers/providers.dart';
@@ -27,7 +26,7 @@ class DashboardScreen extends StatelessWidget {
         options: <Widget>[
           IconButton(
             tooltip: 'Logout',
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.exit_to_app),
             onPressed: () => context.read<AuthBloc>().logout(),
           ),
         ],
@@ -48,7 +47,7 @@ class __DashboardBodyState extends State<_DashboardBody> {
   @override
   void initState() {
     super.initState();
-    initFuture();
+    scheduleMicrotask(initFuture);
   }
 
   Future<void> initFuture() async {
