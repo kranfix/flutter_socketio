@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_socketio/env.dart';
 import 'package:flutter_socketio/src/colors/colors.dart';
 import 'package:flutter_socketio/src/models/models.dart';
 import 'package:flutter_socketio/src/providers/providers.dart';
@@ -14,23 +15,26 @@ import 'package:fab_circular_menu/fab_circular_menu.dart';
 class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyMessageAppBar(
-        messageCounter: 0, // TODO: connect to bloc
-        logo: SocketioLogo(width: 35),
-        // TODO: create MessagesScreen
-        //onTapMessageButton: () => MessageScreen.navigate(context),
-      ),
-      body: FabCircularMenu(
-        ringColor: AppColors.orange.withOpacity(0.5),
-        options: <Widget>[
-          IconButton(
-            tooltip: 'Logout',
-            icon: Icon(Icons.exit_to_app),
-            onPressed: () => context.read<AuthBloc>().logout(),
-          ),
-        ],
-        child: _DashboardBody(),
+    return ChangeNotifierProvider(
+      create: (_) => IoBloc(server: env.chatServer),
+      child: Scaffold(
+        appBar: MyMessageAppBar(
+          messageCounter: 0, // TODO: connect to bloc
+          logo: SocketioLogo(width: 35),
+          // TODO: create MessagesScreen
+          //onTapMessageButton: () => MessageScreen.navigate(context),
+        ),
+        body: FabCircularMenu(
+          ringColor: AppColors.orange.withOpacity(0.5),
+          options: <Widget>[
+            IconButton(
+              tooltip: 'Logout',
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () => context.read<AuthBloc>().logout(),
+            ),
+          ],
+          child: _DashboardBody(),
+        ),
       ),
     );
   }
