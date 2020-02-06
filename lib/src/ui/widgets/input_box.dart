@@ -5,12 +5,12 @@ import 'package:flutter_socketio/src/colors/colors.dart';
 class InputBox extends StatefulWidget {
   const InputBox({
     this.imgUrl,
-    this.onTap,
+    @required this.onTap,
     this.onCloseReplyPressed,
-  });
+  }) : assert(onTap != null);
 
   final String imgUrl;
-  final VoidCallback onTap;
+  final ValueChanged<String> onTap;
   final VoidCallback onCloseReplyPressed;
 
   @override
@@ -49,7 +49,7 @@ class _InputBoxState extends State<InputBox> {
                     scrollPadding: EdgeInsets.all(0),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Escribe una respuesta...',
+                      hintText: 'Type a message...',
                     ),
                     style: TextStyle(height: 1.6, color: AppColors.grey.light1),
                   ),
@@ -61,7 +61,7 @@ class _InputBoxState extends State<InputBox> {
                 builder: (_, value, __) {
                   final text = value.text.trim();
                   return ArrowSendButton(
-                    onTap: text.isNotEmpty ? widget.onTap : null,
+                    onTap: text.isNotEmpty ? () => widget.onTap(text) : null,
                   );
                 },
               ),
