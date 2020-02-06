@@ -47,7 +47,7 @@ class __DashboardBodyState extends State<_DashboardBody> {
   @override
   void initState() {
     super.initState();
-    initFuture();
+    scheduleMicrotask(initFuture);
   }
 
   Future<void> initFuture() async {
