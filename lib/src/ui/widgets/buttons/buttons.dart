@@ -7,3 +7,4 @@ import 'package:flutter_socketio/src/colors/colors.dart';
 part 'large_button.dart';
 part 'my_messages_button.dart';
 part 'link_text.dart';
+part 'async_tapable.dart';
