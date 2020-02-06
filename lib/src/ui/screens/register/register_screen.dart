@@ -8,7 +8,7 @@ class RegisterScreen extends StatefulWidget {
   _RegisterScreenState createState() => _RegisterScreenState();
 
   static Future navigate(BuildContext context) {
-    return Navigator.of(context).pushReplacement(MaterialPageRoute(
+    return Navigator.of(context).push(MaterialPageRoute(
       builder: (_) => RegisterScreen(),
     ));
   }
@@ -19,6 +19,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text('Register',
             style: TextStyle(
               color: Colors.white,
