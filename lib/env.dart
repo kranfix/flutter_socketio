@@ -4,5 +4,5 @@ class Enviroment {
 }
 
 final env = Enviroment(
-  server: "https://reqres.in/",
+  server: "https://reqres.in",
 );
