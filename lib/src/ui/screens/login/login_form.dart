@@ -49,7 +49,7 @@ class _LoginFormState extends State<LoginForm> {
   TextEditingController _emailController;
   TextEditingController _passController;
 
-  bool shouldRememberAccount;
+  bool shouldRememberAccount = true;
 
   String get username => _emailController.text.trim();
 
@@ -63,7 +63,7 @@ class _LoginFormState extends State<LoginForm> {
   @override
   void initState() {
     super.initState();
-    shouldRememberAccount = widget.initalValue != null;
+    //shouldRememberAccount = widget.initalValue != null;
     _emailController = TextEditingController(text: widget.initalValue?.email)
       ..addListener(_refresh);
     _passController = TextEditingController(text: widget.initalValue?.password)
@@ -95,6 +95,7 @@ class _LoginFormState extends State<LoginForm> {
               labelText: widget.password,
               labelStyle: widget.labelStyle,
             ),
+            obscureText: true,
           ),
           SizedBox(height: 20),
           StatefulBuilder(
