@@ -20,11 +20,6 @@ class LoginScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Image.asset(
-        'assets/temporal/banner.png',
-        fit: BoxFit.fitWidth,
-        width: double.infinity,
-      ),
     );
   }
 }
