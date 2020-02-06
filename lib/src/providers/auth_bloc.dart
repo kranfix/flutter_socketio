@@ -4,6 +4,7 @@ enum AuthStatus { idle, loggedIn, loggedOut }
 
 class AuthBloc extends ChangeNotifier {
   static User user;
+  static String get username => '${user.firstName}_${user.lastName}';
 
   AuthBloc({this.persistance}) : assert(persistance != null);
 

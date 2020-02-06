@@ -19,11 +19,12 @@ class MyMessageAppBar extends AppBar {
           actions: <Widget>[
             Center(
               child: MyMessagesButton(
+                text: 'go to chat',
                 onTap: onTapMessageButton,
                 counter: messageCounter,
               ),
             ),
-            SizedBox(width: 12),
+            SizedBox(width: 20),
           ],
         );
 }

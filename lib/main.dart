@@ -29,7 +29,7 @@ class SocketioApp extends StatelessWidget {
       ),
       child: MaterialApp(
         title: 'Intragentes',
-        debugShowCheckedModeBanner: true,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.orange,
           backgroundColor: Colors.white,
