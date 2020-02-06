@@ -6,6 +6,7 @@ extension EmailVerifierX on String {
     if (!_emailPattern.hasMatch(this)) return false;
 
     final firsts = this.split('@');
+    if (firsts.length < 2) return false;
     String domain = firsts[1];
     final parts = domain.split('.');
     for (final p in parts) {
