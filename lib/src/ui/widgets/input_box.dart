@@ -61,12 +61,26 @@ class _InputBoxState extends State<InputBox> {
                 builder: (_, value, __) {
                   final text = value.text.trim();
                   return ArrowSendButton(
-                    onTap: text.isNotEmpty ? () => widget.onTap(text) : null,
+                    onTap: text.isNotEmpty
+                        ? () {
+                            print('ddd');
+                            widget.onTap(text);
+                            controller.text = "";
+                          }
+                        : null,
                   );
                 },
               ),
             ]),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    focus.unfocus();
+    focus.dispose();
+    controller.dispose();
+    super.dispose();
   }
 }

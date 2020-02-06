@@ -26,11 +26,13 @@ class IoBloc extends ChangeNotifier {
 
   SocketIO socket;
 
-  void sendMessage({String username, dynamic message}) {
+  void sendMessage({User user, dynamic message}) {
     final data = <String, dynamic>{
-      'username': username,
+      'username': AuthBloc.username,
+      'user': user.$data,
       'message': message,
     };
-    socket.emit('new message', [data]);
+    print(data);
+    //socket.emit('new message', [data]);
   }
 }
