@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_socketio/src/colors/colors.dart';
 import 'package:flutter_socketio/src/providers/providers.dart';
-import 'package:flutter_socketio/src/ui/screens/register/register_screen.dart';
+import 'package:flutter_socketio/src/ui/screens/screens.dart';
 import 'package:flutter_socketio/src/ui/widgets/widgets.dart';
 import 'package:flutter_socketio/src/utils/extensions/email_verifier_x.dart';
 import 'package:flutter_socketio/src/utils/extensions/password_verifier_x.dart';

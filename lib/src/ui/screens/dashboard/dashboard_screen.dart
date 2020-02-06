@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_socketio/src/colors/colors.dart';
 import 'package:flutter_socketio/src/models/models.dart';
 import 'package:flutter_socketio/src/providers/providers.dart';
