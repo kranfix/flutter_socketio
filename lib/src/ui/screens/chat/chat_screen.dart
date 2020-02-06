@@ -1,16 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_socketio/src/colors/colors.dart';
+import 'package:flutter_socketio/src/providers/providers.dart';
+import 'package:flutter_socketio/src/ui/screens/chat/chat_body.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
 
-  static Future navigate(BuildContext context) {
-    return Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => ChatScreen(),
-    ));
-  }
+  static Future navigate(BuildContext context) => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => ChangeNotifierProvider.value(
+            value: context.watch<IoBloc>(),
+            child: ChatScreen(),
+          ),
+        ),
+      );
 }
 
 class _ChatScreenState extends State<ChatScreen> {
@@ -32,9 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
         centerTitle: true,
         backgroundColor: AppColors.grey.dark2,
       ),
-      body: Center(
-        child: Text('Missing implementation'),
-      ),
+      body: ChatBody(),
     );
   }
 }

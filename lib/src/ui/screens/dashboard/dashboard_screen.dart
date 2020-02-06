@@ -16,22 +16,24 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => IoBloc(server: env.chatServer),
-      child: Scaffold(
-        appBar: MyMessageAppBar(
-          messageCounter: 0, // TODO: connect to bloc
-          logo: SocketioLogo(width: 35),
-          onTapMessageButton: () => ChatScreen.navigate(context),
-        ),
-        body: FabCircularMenu(
-          ringColor: AppColors.orange.withOpacity(0.5),
-          options: <Widget>[
-            IconButton(
-              tooltip: 'Logout',
-              icon: Icon(Icons.exit_to_app),
-              onPressed: () => context.read<AuthBloc>().logout(),
-            ),
-          ],
-          child: _DashboardBody(),
+      child: Builder(
+        builder: (context) => Scaffold(
+          appBar: MyMessageAppBar(
+            messageCounter: 0, // TODO: connect to bloc
+            logo: SocketioLogo(width: 35),
+            onTapMessageButton: () => ChatScreen.navigate(context),
+          ),
+          body: FabCircularMenu(
+            ringColor: AppColors.orange.withOpacity(0.5),
+            options: <Widget>[
+              IconButton(
+                tooltip: 'Logout',
+                icon: Icon(Icons.exit_to_app),
+                onPressed: () => context.read<AuthBloc>().logout(),
+              ),
+            ],
+            child: _DashboardBody(),
+          ),
         ),
       ),
     );
