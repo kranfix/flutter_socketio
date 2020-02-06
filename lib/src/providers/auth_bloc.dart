@@ -34,12 +34,12 @@ class AuthBloc extends ChangeNotifier {
       return;
     }
 
-    //await fetchProfile();
-    //if (shouldRememberAccount ?? false) {
-    //  await persistance.saveAccount(email, password);
-    //} else {
-    //  await persistance.cleanAccount();
-    //}
+    await fetchMe();
+    if (shouldRememberAccount ?? false) {
+      await persistance.saveAccount(email, password);
+    } else {
+      await persistance.cleanAccount();
+    }
     notifyListeners();
   }
 
@@ -52,8 +52,10 @@ class AuthBloc extends ChangeNotifier {
 
   Future<void> validateToken() async {
     final token = await persistance.readToken();
-    if (token != null) {
+    if (token == null) {
       _status = AuthStatus.loggedOut;
+      _savedAccount = await persistance.readSavedAccount();
+      return;
     }
     await fetchMe(token: token);
     _savedAccount = await persistance.readSavedAccount();
