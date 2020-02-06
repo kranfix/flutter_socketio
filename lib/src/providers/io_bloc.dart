@@ -1,23 +1,36 @@
 part of 'providers.dart';
 
 class IoBloc extends ChangeNotifier {
-  factory IoBloc({String server}) {
-    IO.Socket socket = IO.io(server);
-    socket.on('connect', (_) {
-      print('connect');
-      socket.emit('msg', 'test');
-    });
-    socket.on('event', (data) => print(data));
-    socket.on('disconnect', (_) => print('disconnect'));
-    socket.on('fromServer', (_) => print(_));
-    return IoBloc._(socket);
+  IoBloc({String server}) {
+    init(server);
   }
 
-  IoBloc._(this.socket);
+  Future<void> init(String server) async {
+    SocketIOManager manager = SocketIOManager();
+    SocketOptions options = SocketOptions(server);
+    final socket = await manager.createInstance(options);
+    socket.onConnect((data) {
+      print('connected: $data');
+      socket.emit('news', ['hola', 'chau']);
+    });
+    socket.on("news", (data) {
+      //sample event
+      print("news");
+      print(data);
+    });
+    socket.connect();
+    socket.on('new message', (data) => print(data));
+    socket.on('disconnect', (_) => print('disconnect'));
+    socket.on('fromServer', (_) => print(_));
+  }
 
-  final IO.Socket socket;
+  SocketIO socket;
 
-  void sendMessage({String event, dynamic data}) {
-    socket.emit(event, 'test');
+  void sendMessage({String username, dynamic message}) {
+    final data = <String, dynamic>{
+      'username': username,
+      'message': message,
+    };
+    socket.emit('new message', [data]);
   }
 }

@@ -3,7 +3,7 @@ import '../services/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:hive/hive.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:adhara_socket_io/adhara_socket_io.dart';
 
 export 'package:provider/provider.dart';
 
