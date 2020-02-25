@@ -63,9 +63,9 @@ class _InputBoxState extends State<InputBox> {
                   return ArrowSendButton(
                     onTap: text.isNotEmpty
                         ? () {
-                            print('ddd');
                             widget.onTap(text);
                             controller.text = "";
+                            focus.unfocus();
                           }
                         : null,
                   );
