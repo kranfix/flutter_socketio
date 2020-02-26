@@ -18,8 +18,8 @@ class IoBloc extends ChangeNotifier {
     );
     _socket = await manager.createInstance(options);
     _socket.onConnect((data) {
-      print('Connected wit data: $data');
-      sendMessage(message: "Hello, Flutter!");
+      print('Connected with data: $data');
+      //sendMessage(message: "Hello, Flutter!");
     });
     _socket.connect();
     _socket.on(topic, onNewMessage);
@@ -40,11 +40,16 @@ class IoBloc extends ChangeNotifier {
   }
 
   void onNewMessage(dynamic data) {
-    print('onNewMessage: $data');
+    print('onNewMessage: (${data.runtimeType}) $data');
 
-    final m = Message.fromMap(data);
+    // Force to cast Map<dynamic,dynamic> to Map<String, dynamic> in ios
+    final m = Message.fromMap(<String, dynamic>{
+      'username': data['username'],
+      'user': data['user'],
+      'message': data['message'],
+    });
     print(m.user.$data);
-    return _addMessage(Message.fromMap(data));
+    return _addMessage(m);
   }
 
   void _addMessage(Message message) {
