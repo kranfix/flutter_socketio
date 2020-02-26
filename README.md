@@ -1,16 +1,44 @@
 # flutter_socketio
 
-A new Flutter project.
+A simplified chat made with [Flutter](https://flutter.dev),
+[Socket.io](https://) and [HiveDB](https://hivedb.dev/).
+
+This repository container an app, a socket.io server and a emulated socket.io client.
+
+This is not a complete functional app, only has educational pourpose.
+
+## Before starting
+
+Review the slides to a little introduction:
+
+- Slides for [socket.io](https://docs.google.com/presentation/d/1dbpBkJlm-MFpKWdv6b6WG84JaejMC9al8vLSD0dEtHY/edit#slide=id.g5b9a4bdf9e_0_358)
+- Slides for HiveDB ... (comming soon)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+First, go to the socket.io server
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+cd socketio_server
+npm install
+# yarn
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Then, in one terminal, run the server.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+node index.js
+```
+
+And, in another terminal, run a emulated client.
+
+```bash
+node client.js
+```
+
+To finish, run the app and use the following account and navigate to chat screen:
+
+```
+username: eve.holt@reqres.in
+password: cityslicka1A!
+```
