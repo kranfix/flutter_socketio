@@ -3,17 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_socketio/src/providers/providers.dart';
 import 'package:flutter_socketio/src/ui/widgets/widgets.dart';
 
-class ChatBody extends StatefulWidget {
-  @override
-  _ChatBodyState createState() => _ChatBodyState();
-}
-
-class _ChatBodyState extends State<ChatBody> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class ChatBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ioBloc = context.watch<IoBloc>();
