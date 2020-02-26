@@ -7,6 +7,7 @@ class IoBloc extends ChangeNotifier {
     init(server);
   }
 
+  SocketIO _socket;
   List<Message> _messages;
   List<Message> get messages => _messages;
 
@@ -26,8 +27,6 @@ class IoBloc extends ChangeNotifier {
     _socket.on('disconnect', (_) => print('disconnect'));
     _socket.on('fromServer', (_) => print(_));
   }
-
-  SocketIO _socket;
 
   void sendMessage({dynamic message}) {
     final data = <String, dynamic>{
