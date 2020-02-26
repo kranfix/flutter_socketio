@@ -9,5 +9,5 @@ class Enviroment {
 
 final env = Enviroment(
   server: "https://reqres.in",
-  chatServer: "https://socket-io-chat.now.sh/",
+  chatServer: "http://127.0.0.1:3000/",
 );
