@@ -12,7 +12,7 @@ This is not a complete functional app, only has educational pourpose.
 Review the slides to a little introduction:
 
 - Slides for [socket.io](https://docs.google.com/presentation/d/1dbpBkJlm-MFpKWdv6b6WG84JaejMC9al8vLSD0dEtHY/edit#slide=id.g5b9a4bdf9e_0_358)
-- Slides for HiveDB ... (comming soon)
+- Slides for [HiveDB](https://docs.google.com/presentation/d/1EsGdW7NBCatXgjlPGcJjaM0Fe2lZk26Lpkf0Ti2dlOw/edit?usp=sharing)
 
 ## Getting Started
 
